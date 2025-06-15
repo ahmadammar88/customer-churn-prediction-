@@ -37,6 +37,10 @@ Thumbs.db
 
 # MLflow
 mlruns/
+mlartifacts/
+
+# Model files
+*.joblib
 
 # Streamlit
 .streamlit/

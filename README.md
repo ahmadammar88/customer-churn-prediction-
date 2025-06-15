@@ -1,47 +1,65 @@
 # Customer Churn Prediction App
 
-A Streamlit application that predicts customer churn using machine learning. The application uses a Random Forest model trained on the Telco Customer Churn dataset.
+A Streamlit application for predicting customer churn using machine learning. The app uses a Random Forest model trained on the Telco Customer Churn dataset.
 
 ## Features
 
 - Interactive input form for customer details
-- Real-time churn prediction
-- Model performance metrics
-- MLflow integration for experiment tracking
-- AWS Amplify deployment ready
+- Real-time churn prediction (Yes/No)
+- MLflow integration for model tracking
+- Simple and clean user interface
 
-## Setup
+## Setup Instructions
 
-1. Install the required packages:
+1. Clone the repository:
+```bash
+git clone https://github.com/ahmadammar88/customer-churn-prediction-.git
+cd customer-churn-prediction-
+```
+
+2. Install required packages:
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Run the Streamlit app:
+3. Train the model:
 ```bash
-streamlit run app.py
+python train_model.py
 ```
 
-3. (Optional) Start MLflow UI for experiment tracking:
+4. Run the Streamlit app:
 ```bash
-python -m mlflow ui --port 5000
+streamlit run app.py --server.port 8502
 ```
 
-## Usage
+## Optional: MLflow Tracking
 
-1. Open the application in your browser (default: http://localhost:8501)
-2. Enter customer details in the input fields
-3. Click "Predict Churn" to get the prediction
-4. View model performance metrics
+To view model performance metrics:
 
-## AWS Amplify Deployment
+1. Start MLflow server:
+```bash
+python -m mlflow ui
+```
 
-This project is configured for deployment on AWS Amplify. The main branch contains the production-ready code.
+2. Open http://127.0.0.1:5000 in your browser
 
 ## Project Structure
 
-- `app.py`: Main Streamlit application
-- `requirements.txt`: Python dependencies
+- `app.py`: Streamlit application
+- `train_model.py`: Model training script
+- `requirements.txt`: Project dependencies
 - `WA_Fn-UseC_-Telco-Customer-Churn.csv`: Dataset
-- `.gitignore`: Git ignore rules
-- `README.md`: Project documentation 
+
+## Usage
+
+1. Enter customer details in the input form:
+   - Tenure (months)
+   - Monthly Charges
+   - Total Charges
+   - Contract Type
+   - Payment Method
+   - Internet Service
+
+2. Click "Predict Churn" to get the prediction
+
+3. The result will show either "Yes" or "No" for churn prediction 
