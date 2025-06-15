@@ -109,7 +109,4 @@ This application predicts customer churn based on various factors including:
 - Internet Service
 
 The model is trained on historical customer data and uses Random Forest algorithm for predictions.
-""")
-
-# Expose the server for gunicorn
-server = st.server 
+""") 
