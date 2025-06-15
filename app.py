@@ -5,6 +5,10 @@ import joblib
 from sklearn.preprocessing import LabelEncoder
 import os
 
+# Set environment variables for Azure
+os.environ['STREAMLIT_SERVER_PORT'] = '8000'
+os.environ['STREAMLIT_SERVER_ADDRESS'] = '0.0.0.0'
+
 # Set page config
 st.set_page_config(
     page_title="Customer Churn Prediction",
