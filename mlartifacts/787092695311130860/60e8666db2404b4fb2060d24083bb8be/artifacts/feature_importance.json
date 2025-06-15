@@ -1,0 +1,1 @@
+{"columns":["feature","importance"],"data":[["tenure",0.1952977231],["MonthlyCharges",0.3045008045],["TotalCharges",0.3003571313],["Contract",0.1005366041],["PaymentMethod",0.0530791003],["InternetService",0.0462286367]]}
