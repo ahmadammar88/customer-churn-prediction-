@@ -57,22 +57,22 @@ with col2:
 
 # Cache the prediction function
 @st.cache_data(ttl=300)  # Cache for 5 minutes
-def make_prediction(model, encoders, input_data):
+def make_prediction(_model, _encoders, input_data):
     """Make prediction using the trained model"""
     try:
         # Prepare input data
         input_df = pd.DataFrame([input_data])
         
         # Encode categorical features
-        input_df['Contract'] = encoders['contract'].transform(input_df['Contract'])
-        input_df['PaymentMethod'] = encoders['payment'].transform(input_df['PaymentMethod'])
-        input_df['InternetService'] = encoders['internet'].transform(input_df['InternetService'])
+        input_df['Contract'] = _encoders['contract'].transform(input_df['Contract'])
+        input_df['PaymentMethod'] = _encoders['payment'].transform(input_df['PaymentMethod'])
+        input_df['InternetService'] = _encoders['internet'].transform(input_df['InternetService'])
         
         # Make prediction
-        prediction = model.predict(input_df)
+        prediction = _model.predict(input_df)
         
         # Convert prediction to Yes/No using the target encoder
-        return encoders['target'].inverse_transform(prediction)[0]
+        return _encoders['target'].inverse_transform(prediction)[0]
     except Exception as e:
         st.error(f"Error making prediction: {str(e)}")
         return None
