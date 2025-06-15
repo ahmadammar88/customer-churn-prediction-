@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import joblib
 from sklearn.preprocessing import LabelEncoder
+import os
 
 # Set page config
 st.set_page_config(
@@ -11,8 +12,8 @@ st.set_page_config(
     layout="wide"
 )
 
-# Load the saved model and encoders
-@st.cache_resource
+# Cache the model loading
+@st.cache_resource(ttl=3600)  # Cache for 1 hour
 def load_model():
     try:
         model = joblib.load('churn_model.joblib')
@@ -48,7 +49,8 @@ with col2:
     ])
     internet_service = st.selectbox("Internet Service", ["DSL", "Fiber optic", "No"])
 
-# Make prediction
+# Cache the prediction function
+@st.cache_data(ttl=300)  # Cache for 5 minutes
 def make_prediction(model, encoders, input_data):
     """Make prediction using the trained model"""
     try:
