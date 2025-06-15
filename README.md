@@ -29,7 +29,7 @@ python train_model.py
 
 4. Run the Streamlit app:
 ```bash
-streamlit run app.py --server.port 8502
+streamlit run app.py --server.port 8504
 ```
 
 ## Optional: MLflow Tracking
@@ -62,4 +62,10 @@ python -m mlflow ui
 
 2. Click "Predict Churn" to get the prediction
 
-3. The result will show either "Yes" or "No" for churn prediction 
+3. The result will show either "Yes" or "No" for churn prediction
+
+## Accessing the App
+
+Once running, open your browser and go to:
+
+http://localhost:8504 
