@@ -7,6 +7,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 import joblib
 import mlflow
 import mlflow.sklearn
+import pickle
 
 def prepare_data():
     """Prepare the data for training"""
@@ -91,10 +92,11 @@ def train_and_save_model():
         # Log the model
         mlflow.sklearn.log_model(model, "model")
         
-        # Save model and encoders locally
-        joblib.dump(model, 'churn_model.joblib')
-        joblib.dump(encoders, 'churn_encoders.joblib')
-        
+        # Save model and encoders with pickle
+        with open('churn_model.pkl', 'wb') as f:
+            pickle.dump(model, f)
+        with open('churn_encoders.pkl', 'wb') as f:
+            pickle.dump(encoders, f)
         print("Model and encoders saved successfully!")
         print("\nModel Performance Metrics:")
         for metric, value in metrics.items():

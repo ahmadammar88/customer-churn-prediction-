@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import joblib
+import pickle
 from sklearn.preprocessing import LabelEncoder
 import os
 
@@ -20,8 +20,10 @@ st.set_page_config(
 @st.cache_resource(ttl=3600)  # Cache for 1 hour
 def load_model():
     try:
-        model = joblib.load('churn_model.joblib')
-        encoders = joblib.load('churn_encoders.joblib')
+        with open('churn_model.pkl', 'rb') as f:
+            model = pickle.load(f)
+        with open('churn_encoders.pkl', 'rb') as f:
+            encoders = pickle.load(f)
         return model, encoders
     except Exception as e:
         st.error(f"Error loading model: {str(e)}")

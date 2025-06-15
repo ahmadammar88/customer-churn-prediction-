@@ -10,7 +10,7 @@ source env/bin/activate
 pip install -r requirements.txt
 
 # Train the model if not already trained
-if [ ! -f "churn_model.joblib" ]; then
+if [ ! -f "churn_model.pkl" ]; then
     python train_model.py
 fi
 
